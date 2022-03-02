@@ -1,0 +1,159 @@
+ext {
+    //android-gradle版本
+    android_plugin = "4.1.3"
+    //Kotlin 版本
+    kotlin_version = "1.4.0-rc"
+
+    //Android工程配置相关
+    androidCompileSdkVersion = 30
+    androidBuildToolsVersion = "30.0.0"
+    androidMinSdkVersion = 22
+    androidTargetSdkVersion = 30
+    //JDK版本
+    javaVersion = '1.8'
+    //android 版本
+    versionCode = 1
+    versionName = "1.0"
+
+
+    //类库配置相关
+    constraint_layout = '1.1.3'
+    appcompat = '1.1.0'
+    material = '1.1.0'
+    multidex = '2.0.0'
+    recyclerView = '1.2.0-alpha03'
+    cardview = '1.0.0'
+    annotation = '1.1.0'
+
+    butterKnifeVersion = '10.1.0'
+    rxandroid = '2.0.1'
+    rxjava = '2.1.8'
+    retrofit = '2.4.0'
+    converter_gson = '2.4.0'
+    adapter_rxjava2 = '2.4.0'
+    logging_interceptor = '3.8.1'
+    okhttp = '3.8.1'
+    eventbus = '3.1.1'
+    logger = '2.2.0'
+    adapterHelper = '2.9.30'
+    glide = '4.11.0'
+    gif = '1.4'
+    refresh = '1.0.5.1'
+    circleimageview = '2.2.0'
+    pickview = '1.2.3'
+    Android_PickerView = '4.1.8'
+    lottie = '4.1.0'
+    rxpermissions = '0.10.2'
+    rxlifecycle_android = '2.0.1'
+    rxlifecycle_components = '2.0.1'
+    sofia = '1.0.5'
+    MagicIndicator = '1.5.0'
+    roundedimageview = '2.3.0'
+    leakcanary = '1.6.2'
+    autosize = '1.2.1'
+    immersionbar = '3.0.0-beta05'
+    NetworkDetector = 'v0.1.0'
+    transformations = '4.0.1'
+    Banner = "1.0.7"
+    y_divideritemdecoration = "2.0"
+    swipe_back = "1.1.0"
+    ImageWatcher = "1.1.5"
+    recyclerview_animators = "2.2.6"
+    richtext = "3.0.8"
+    horizontalrefreshlayout = "v0.1.2"
+    httplogger = "1.0.1"
+    animated_gif = "1.10.0"
+    flowlayout = "1.0.1"
+    dialog = "1.1.0"
+    react_native = "0.3.2"
+    crashreport_upgrade = "1.4.2"
+    tinker_android_lib = "1.9.14.3"    // 指定tinker依赖版本（注：应用升级1.3.5版本起，不再内置tinker）
+    nativecrashreport = "3.7.1"
+    PhotoView = "2.3.0"
+    oss_android_sdk = "2.9.11"
+    om_recorder = "1.1.5"
+    ffmpeg_android_java = "2a627f6ecd@aar"
+    stateview_library = "1.5.4"
+    microsoft_voice = "1.12.1"
+    RangeSeekBar = "v3.0.0"
+    ViewPager2 = "1.0.0"
+
+    //android-gradle版本、Kotlin 版本
+    build_plugins = [
+            android_gradle: "com.android.tools.build:gradle:${android_plugin}",
+            kotlin_gradle : "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    ]
+
+
+    //默认支持库
+    supportDependencies = [
+            appcompat       : "androidx.appcompat:appcompat:$appcompat",
+            material        : "com.google.android.material:material:$material",
+            recyclerView    : "androidx.recyclerview:recyclerview:$recyclerView",
+            cardview        : "androidx.cardview:cardview:$cardview",
+            annotation      : "androidx.annotation:annotation:$annotation",
+            constraintlayout: "androidx.constraintlayout:constraintlayout:$constraint_layout"
+    ]
+
+    //非默认支持库
+    otherDependencies = [
+            multidex                   : "androidx.multidex:multidex:${multidex}",
+            butterKnife                : "com.jakewharton:butterknife:${butterKnifeVersion}",
+            apt_butterKnife            : "com.jakewharton:butterknife-compiler:${butterKnifeVersion}",
+            rxandroid                  : "io.reactivex.rxjava2:rxandroid:${rxandroid}",
+            rxjava                     : "io.reactivex.rxjava2:rxjava:${rxjava}",
+            retrofit                   : "com.squareup.retrofit2:retrofit:${retrofit}",
+            converter_gson             : "com.squareup.retrofit2:converter-gson:${converter_gson}",
+            adapter_rxjava2            : "com.squareup.retrofit2:adapter-rxjava2:${adapter_rxjava2}",
+            logging_interceptor        : "com.squareup.okhttp3:logging-interceptor:${logging_interceptor}",
+            okhttp                     : "com.squareup.okhttp3:okhttp:${okhttp}",
+            eventbus                   : "org.greenrobot:eventbus:${eventbus}",
+            logger                     : "com.orhanobut:logger:${logger}",
+            adapterHelper              : "com.github.CymChad:BaseRecyclerViewAdapterHelper:${adapterHelper}",
+            glide                      : "com.github.bumptech.glide:glide:${glide}",
+            glide_compiler             : "com.github.bumptech.glide:compiler:${glide}",
+            gif                        : "com.github.Cutta:GifView:${gif}",
+            refresh_layout             : "com.scwang.smartrefresh:SmartRefreshLayout:${refresh}",
+            refresh_layout_header      : "com.scwang.smartrefresh:SmartRefreshHeader:${refresh}",
+            circleimageview            : "de.hdodenhof:circleimageview:${circleimageview}",
+            pickview                   : "com.brucetoo.pickview:library:${pickview}",
+            Android_PickerView         : "com.contrarywind:Android-PickerView:${Android_PickerView}",
+            lottie                     : "com.airbnb.android:lottie:${lottie}",
+            rxpermissions              : "com.github.tbruyelle:rxpermissions:${rxpermissions}",
+            rxlifecycle_android        : "com.trello.rxlifecycle2:rxlifecycle-android:${rxlifecycle_android}",
+            rxlifecycle_components     : "com.trello.rxlifecycle2:rxlifecycle-components:${rxlifecycle_components}",
+            sofia                      : "com.yanzhenjie:sofia:${sofia}",
+            MagicIndicator             : "com.github.hackware1993:MagicIndicator:${MagicIndicator}",
+            roundedimageview           : "com.makeramen:roundedimageview:${roundedimageview}",
+            leakcanary_android         : "com.squareup.leakcanary:leakcanary-android:${leakcanary}",
+            leakcanary_android_no_op   : "com.squareup.leakcanary:leakcanary-android-no-op:${leakcanary}",
+            leakcanary_support_fragment: "com.squareup.leakcanary:leakcanary-support-fragment:${leakcanary}",
+            autosize                   : "me.jessyan:autosize:${autosize}",
+            immersionbar               : "com.gyf.immersionbar:immersionbar:${immersionbar}",
+            NetworkDetector            : "com.github.shuai132:NetworkDetector:${NetworkDetector}",
+            transformations            : "jp.wasabeef:glide-transformations:${transformations}",
+            Banner                     : "com.github.lzy2626:Banner:${Banner}",
+            y_divideritemdecoration    : "com.yanyusong.y_divideritemdecoration:y_divideritemdecoration:${y_divideritemdecoration}",
+            swipe_back                 : "me.imid.swipebacklayout.lib:library:${swipe_back}",
+            ImageWatcher               : "com.github.iielse:ImageWatcher:${ImageWatcher}",
+            recyclerview_animators     : "jp.wasabeef:recyclerview-animators:${recyclerview_animators}",
+            richtext                   : "com.zzhoujay.richtext:richtext:${richtext}",
+            horizontalrefreshlayout    : "xiao.free.horizontalrefreshlayout:lib:${horizontalrefreshlayout}",
+            httplogger                 : "com.cjj.httplogger:HttpLogger:${httplogger}",
+            animated_gif               : "com.facebook.fresco:animated-gif:${animated_gif}",
+            flowlayout                 : "com.github.djzhao627:FlowLayout:${flowlayout}",
+            dialog                     : "com.ninetripods:lib-dialog:${dialog}",
+            react_native               : "com.facebook.react:react-native:${react_native}",
+            crashreport_upgrade        : "com.tencent.bugly:crashreport_upgrade:${crashreport_upgrade}",
+            tinker_android_lib         : "com.tencent.tinker:tinker-android-lib:${tinker_android_lib}",
+            nativecrashreport          : "com.tencent.bugly:nativecrashreport:${nativecrashreport}",
+            PhotoView                  : "com.github.chrisbanes:PhotoView:${PhotoView}",
+            oss_android_sdk            : "com.aliyun.dpa:oss-android-sdk:${oss_android_sdk}",
+            om_recorder                : "com.kailashdabhi:om-recorder:${om_recorder}",
+            ffmpeg_android_java        : "com.github.adrielcafe:ffmpeg-android-java:${ffmpeg_android_java}",
+            stateview_library          : "com.github.nukc.stateview:library:${stateview_library}",
+            microsoft_voice            : "com.microsoft.cognitiveservices.speech:client-sdk:${microsoft_voice}",
+            RangeSeekBar               : "com.github.Jay-Goo:RangeSeekBar:${RangeSeekBar}",
+            ViewPager2                 : "androidx.viewpager2:viewpager2:${ViewPager2}",
+    ]
+}

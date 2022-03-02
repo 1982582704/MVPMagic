@@ -3,15 +3,17 @@ plugins {
 }
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "31.0.0"
+    def globalConfiguration = rootProject.extensions.getByName("ext")
+
+    compileSdkVersion globalConfiguration.androidCompileSdkVersion
+    buildToolsVersion globalConfiguration.androidBuildToolsVersion
 
     defaultConfig {
         applicationId "com.shen.mvpmagic"
-        minSdkVersion 22
-        targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion globalConfiguration.androidMinSdkVersion
+        targetSdkVersion globalConfiguration.androidTargetSdkVersion
+        versionCode globalConfiguration.versionCode
+        versionName globalConfiguration.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -23,17 +25,26 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility globalConfiguration.javaVersion
+        targetCompatibility globalConfiguration.javaVersion
     }
 }
 
 dependencies {
 
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'com.google.android.material:material:1.1.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    def supportDependencies = rootProject.extensions.getByName("ext").supportDependencies
+    //默认支持
+    implementation supportDependencies.appcompat
+    implementation supportDependencies.material
+    implementation supportDependencies.constraintlayout
+    implementation supportDependencies.recyclerView
+    implementation supportDependencies.cardview
+    implementation supportDependencies.annotation
+    implementation supportDependencies.constraintlayout
+
+    //引用配置文件 非官方库
+    def otherDependencies = rootProject.extensions.getByName("ext").otherDependencies
+
+    //适配(去掉适配) 这是两种依赖方式
+    implementation otherDependencies.autosize
 }
