@@ -1,6 +1,6 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
-//引用配置文件
+    //引用配置文件
     apply from: 'dependencies.gradle'
 
     repositories {

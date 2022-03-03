@@ -18,12 +18,44 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    //签名信息
+    signingConfigs {
+        signApp {
+            storeFile file('../mvpmagic.keystore')
+            storePassword "123456"
+            keyAlias "com.shen.mvpmagic"
+            keyPassword "123456"
+        }
+    }
+
     buildTypes {
         release {
+            debuggable false
+            minifyEnabled true
+            signingConfig signingConfigs.signApp
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            debuggable true
             minifyEnabled false
+            signingConfig signingConfigs.signApp
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    //配置自定义打包名称
+    applicationVariants.all { variant ->
+        variant.outputs.all {
+            def fileName
+            if (variant.buildType.name.equals('release')) {
+                fileName = "MvpMagic.apk"
+            } else if (variant.buildType.name.equals('debug')) {
+                fileName = "MvpMagic_debug.apk"
+            }
+            outputFileName = fileName;
+        }
+    }
+
     compileOptions {
         sourceCompatibility globalConfiguration.javaVersion
         targetCompatibility globalConfiguration.javaVersion
@@ -33,7 +65,7 @@ android {
 dependencies {
 
     def supportDependencies = rootProject.extensions.getByName("ext").supportDependencies
-    //默认支持
+    //默认支持库
     implementation supportDependencies.appcompat
     implementation supportDependencies.material
     implementation supportDependencies.constraintlayout
@@ -42,7 +74,7 @@ dependencies {
     implementation supportDependencies.annotation
     implementation supportDependencies.constraintlayout
 
-    //引用配置文件 非官方库
+    //引用配置文件 非默认支持
     def otherDependencies = rootProject.extensions.getByName("ext").otherDependencies
 
     //适配(去掉适配) 这是两种依赖方式
