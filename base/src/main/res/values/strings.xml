@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="base_net_error">网络请求失败\n请检查您的网络设置</string>
+
+    <string name="base_net_error_tip">内容加载失败，请检查网络</string>
+
+    <string name="base_reload">重新加载</string>
+
+    <string name="base_empty">啊哦~ 这里什么都没有，去看看别的吧</string>
+
+</resources>

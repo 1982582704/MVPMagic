@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="base_head_bar">#9162E7</color>
+    <!-- 白色 -->
+    <color name="base_white">#ffffff</color>
+    <!--透明色 -->
+    <color name="base_transparent">#00000000</color>
+    <!--10% 透明色 -->
+    <color name="base_transparent_ten">#1A000000</color>
+    <!--20% 透明色 -->
+    <color name="base_black_t_dd">#33000000</color>
+    <!--40%  透明色 -->
+    <color name="base_black_t_66">#66000000</color>
+    <!--70%  透明色 -->
+    <color name="base_black_t_B3">#B3000000</color>
+
+    <color name="base_text_color_99">#999999</color>
+
+    <color name="base_text_color_66">#666666</color>
+    <color name="base_text_color_33">#333333</color>
+    <color name="base_text_gray_f2">#F2F2F2</color>
+    <color name="base_button_bg">#EFEFEF</color>
+    <color name="base_buttom_bg2">#ffefefef</color>
+    <!--文字内容标准颜色-->
+    <color name="base_text_main_color">#ff333333</color>
+
+    <color name="base_text_color_ff99">#ff999999</color>
+
+    <color name="base_text_color_33f">#33ffffff</color>
+
+    <color name="base_text_color_22">#222222</color>
+
+    <color name="base_black_t_cc">#cc000000</color>
+
+    <color name="base_toolbar_title">#ff000000</color>
+
+    <color name="base_toolbar_black">#4dffffff</color>
+
+    <color name="base_gray_fc">#FCFCFC</color>
+    <color name="account_gray_bg">#fff7f7f7</color>
+
+    <color name="base_bg_top_view_meg_white">#faffffff</color>
+
+</resources>

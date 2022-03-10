@@ -1,0 +1,118 @@
+plugins {
+    id 'com.android.library'
+}
+
+android {
+    def globalConfiguration = rootProject.extensions.getByName("ext")
+
+    compileSdkVersion globalConfiguration.androidCompileSdkVersion
+    buildToolsVersion globalConfiguration.androidBuildToolsVersion
+
+
+    defaultConfig {
+        minSdkVersion globalConfiguration.androidMinSdkVersion
+        targetSdkVersion globalConfiguration.androidTargetSdkVersion
+        versionCode globalConfiguration.versionCode
+        versionName globalConfiguration.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            debuggable false
+            minifyEnabled false
+
+            /**正式环境**/
+            buildConfigField "String", "WEB_URL", '"https://www.hao123.com/"'
+            buildConfigField "String", "ROOT_URL", '"https://appapi.chinaso.com/young/"'//域名
+
+        }
+        debug {
+            debuggable true
+            minifyEnabled false
+
+            /**测试环境**/
+            buildConfigField "String", "WEB_URL", '"https://www.baidu.com/"'
+            buildConfigField "String", "ROOT_URL", '"https://appapitest.chinaso.com/young/"'//域名
+
+        }
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility = globalConfiguration.javaVersion
+        targetCompatibility = globalConfiguration.javaVersion
+    }
+
+    dataBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+    api fileTree(include: ['*.aar', '*.jar'], exclude: [], dir: 'libs')
+    def supportDependencies = rootProject.extensions.getByName("ext").supportDependencies
+    //默认支持库
+    api supportDependencies.appcompat
+    api supportDependencies.material
+    api supportDependencies.constraintlayout
+    api supportDependencies.recyclerView
+    api supportDependencies.cardview
+    api supportDependencies.annotation
+    api supportDependencies.constraintlayout
+
+    //引用配置文件 非默认支持
+    def otherDependencies = rootProject.extensions.getByName("ext").otherDependencies
+
+    //适配(去掉适配) 这是两种依赖方式
+    api otherDependencies.autosize
+
+
+    //rx
+    api otherDependencies.rxandroid
+    api otherDependencies.rxjava
+    api otherDependencies.adapter_rxjava2
+
+    //retrofit
+    api otherDependencies.retrofit
+    api otherDependencies.converter_gson
+
+    //okHttp
+    api otherDependencies.logging_interceptor
+    api otherDependencies.okhttp
+
+    //eventBus
+    api otherDependencies.eventbus
+
+    //logger
+    api otherDependencies.logger
+
+    //图片加载Glide
+    api otherDependencies.glide
+    annotationProcessor otherDependencies.glide_compiler
+
+    //生命周期组件
+    api otherDependencies.rxlifecycle_components
+    api otherDependencies.rxlifecycle_android
+
+    //状态栏工具类
+    api otherDependencies.immersionbar
+
+    //网络状态工具类
+    api otherDependencies.NetworkDetector
+
+    //手势返回
+//    api otherDependencies.swipe_back
+
+    //http logger
+    api otherDependencies.httplogger
+
+    api otherDependencies.butterKnife
+
+}
