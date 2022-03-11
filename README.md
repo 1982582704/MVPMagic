@@ -4,6 +4,7 @@
 
 代码规范格外注意点：
 1）全局变量的权限符
+
 2）全局变量和私有变量的表现形式---驼峰
 3）try catch  e.printStack无用删除,格外注意Integer.ParseInt抛出的numberFormatException
 4) 方法的细粒度合理（方法内代码量尽量维持在100行左右）
