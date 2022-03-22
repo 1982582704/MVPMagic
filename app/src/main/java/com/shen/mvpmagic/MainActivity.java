@@ -2,6 +2,8 @@ package com.shen.mvpmagic;
 
 import android.widget.Toast;
 
+import androidx.databinding.DataBindingUtil;
+
 import com.shen.base.base.BaseActivity;
 import com.shen.mvpmagic.databinding.ActivityMainBinding;
 
@@ -10,17 +12,19 @@ import com.shen.mvpmagic.databinding.ActivityMainBinding;
  * @time: 2022/3/1 18:02
  * @desc:
  **/
-public class MainActivity extends BaseActivity<ActivityMainBinding> {
+public class MainActivity extends BaseActivity {
+
+    protected ActivityMainBinding mBinding;
 
     @Override
-    protected int getLayoutResId() {
-        return R.layout.activity_main;
+    protected void getLayoutResId() {
+        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
     }
 
     @Override
     protected void initData() {
         mBinding.tv.setOnClickListener(v -> {
-            Toast.makeText(this, "123000-0000", 0).show();
+            Toast.makeText(this, "000-0000", 0).show();
         });
     }
 

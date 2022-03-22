@@ -3,8 +3,6 @@ package com.shen.base.base;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
-import androidx.databinding.DataBindingUtil;
-import androidx.databinding.ViewDataBinding;
 
 import com.gyf.immersionbar.ImmersionBar;
 import com.shen.base.R;
@@ -21,17 +19,16 @@ import com.xiaoyezi.networkdetector.NetworkType;
  * @time: 2022/3/4 15:46
  * @desc:Activity基类
  **/
-public abstract class BaseActivity<D extends ViewDataBinding> extends RxAppCompatActivity implements BaseView {
+public abstract class BaseActivity<T extends BasePresenter> extends RxAppCompatActivity implements BaseView {
 
-    protected D mBinding;
-    protected boolean isImmersionBarEnabled = true;
+    protected T mPresenter;
     protected NetStateObserver netStateObserver;
+    protected boolean isImmersionBarEnabled = true;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        reqFullScreen();
         super.onCreate(savedInstanceState);
-        mBinding = DataBindingUtil.setContentView(this, getLayoutResId());
+        getLayoutResId();
         AppManager.getInstance().addActivity(this);
         initStatusBar();
         initData();
@@ -50,14 +47,12 @@ public abstract class BaseActivity<D extends ViewDataBinding> extends RxAppCompa
             public void onDisconnected() {
                 //网络断开
                 BaseActivity.this.onDisconnected();
-//                ToastUtils.showSuccessImgToast(MainApplication.getContext(), "网络断开", 0);
             }
 
             @Override
             public void onConnected(NetworkType networkType) {
                 //网络重连
                 BaseActivity.this.onConnected(networkType);
-//                ToastUtils.showSuccessImgToast(MainApplication.getContext(), "网络重连", 0);
             }
         };
         if (isNetStateObserver()) {
@@ -70,7 +65,7 @@ public abstract class BaseActivity<D extends ViewDataBinding> extends RxAppCompa
      *
      * @return
      */
-    protected abstract int getLayoutResId();
+    protected abstract void getLayoutResId();
 
     /**
      * 初始化数据
@@ -174,10 +169,9 @@ public abstract class BaseActivity<D extends ViewDataBinding> extends RxAppCompa
         if (isNetStateObserver()) {
             NetworkDetector.getInstance().removeObserver(netStateObserver);
         }
-
-        if (mBinding != null) {
-            mBinding.unbind();
-            mBinding = null;
+        if (mPresenter != null) {
+            mPresenter.onDestroy();
+            mPresenter = null;
         }
         AppManager.getInstance().finishActivity(this);
         super.onDestroy();
